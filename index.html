@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小城微光：高氏一家 | 澳門歲月紀錄誌</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Serif TC & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amberGold: '#d97706',
+                        warmBg: '#fdfbf7',
+                        cardBg: '#f8f4eb',
+                        macauTeal: '#0f766e',
+                        macauRed: '#9f1239',
+                        darkSlate: '#1e293b'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #2d3748;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-serif-custom {
+            font-family: 'Noto Serif TC', serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(217, 119, 6, 0.15);
+        }
+        .hero-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #fdfbf7 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+            background-opacity: 0.05;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="hero-pattern min-h-screen text-slate-800 flex flex-col justify-between selection:bg-amber-100 selection:text-amber-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass-card border-b border-amber-100/60 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center font-serif-custom text-xl font-bold shadow-md group-hover:scale-105 transition-transform">
+                    高
+                </div>
+                <div>
+                    <h1 class="font-serif-custom text-lg font-bold text-slate-900 tracking-wide">小城微光</h1>
+                    <p class="text-xs text-amber-700 tracking-widest font-medium">高氏一家 · 澳門歲月誌</p>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#about" class="text-slate-600 hover:text-amber-700 transition-colors">家族故事</a>
+                <a href="#members" class="text-slate-600 hover:text-amber-700 transition-colors">核心成員</a>
+                <a href="#bus-driver" class="text-slate-600 hover:text-amber-700 transition-colors">賜榮的方向盤</a>
+                <a href="#housewife" class="text-slate-600 hover:text-amber-700 transition-colors">鳳香的溫馨家</a>
+                <a href="#son" class="text-slate-600 hover:text-amber-700 transition-colors">子聰的成長誌</a>
+                <a href="#timeline" class="text-slate-600 hover:text-amber-700 transition-colors">時光軸</a>
+                <a href="#guestbook" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full shadow-sm transition-all text-xs tracking-wider">祝福留言</a>
+            </nav>
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-slate-700 p-2 focus:outline-none" aria-label="切換選單">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/95 border-b border-amber-100 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <a href="#about" class="block py-2 text-slate-700 hover:text-amber-700">家族故事</a>
+            <a href="#members" class="block py-2 text-slate-700 hover:text-amber-700">核心成員</a>
+            <a href="#bus-driver" class="block py-2 text-slate-700 hover:text-amber-700">賜榮的方向盤</a>
+            <a href="#housewife" class="block py-2 text-slate-700 hover:text-amber-700">鳳香的溫馨家</a>
+            <a href="#son" class="block py-2 text-slate-700 hover:text-amber-700">子聰的成長誌</a>
+            <a href="#timeline" class="block py-2 text-slate-700 hover:text-amber-700">時光軸</a>
+            <a href="#guestbook" class="block py-2 text-amber-700 font-bold">祝福留言</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 bg-amber-100/80 text-amber-900 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase border border-amber-200">
+                    <i class="fa-solid fa-heart text-amber-600"></i> 一個澳門平凡家庭的真實與溫暖
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif-custom text-slate-900 leading-tight">
+                    方向盤上的責任，<br>
+                    <span class="text-amber-700">餐桌旁的守候，</span><br>
+                    與薪火相傳的希望。
+                </h1>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    在澳門這座新舊交融的小城裡，高家沒有驚天動地的傳奇，卻有著最動人的平凡歲月。父親高賜榮穿梭於小巷大街的巴士駕駛座，母親馬鳳香打理著煙火氣十足的溫馨家園，兒子高子聰在溫暖與陪伴中茁壯成長。
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#members" class="bg-amber-700 hover:bg-amber-800 text-white px-6 py-3 rounded-xl font-medium shadow-md transition-all flex items-center gap-2">
+                        <span>認識三位主角</span>
+                        <i class="fa-solid fa-arrow-down text-sm"></i>
+                    </a>
+                    <button onclick="openStoryModal()" class="bg-white hover:bg-amber-50 text-slate-700 border border-amber-200 px-6 py-3 rounded-xl font-medium shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-amber-600"></i>
+                        <span>閱讀家族簡史</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative">
+                <div class="relative mx-auto max-w-sm rounded-3xl bg-amber-100/50 p-4 shadow-xl border border-amber-200/80 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                    <div class="rounded-2xl overflow-hidden bg-slate-200 relative aspect-[4/3] shadow-inner flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" alt="澳門街景與家族意象" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <p class="text-xs font-light opacity-90">澳門 · 提督馬路與筷子基的故事</p>
+                            <p class="font-serif-custom text-lg font-medium">高氏三口 · 溫情共枕</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats Badges -->
+                    <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-sm">
+                            <i class="fa-solid fa-bus text-amber-600 text-base mb-1"></i>
+                            <div class="text-xs text-slate-500">父親高賜榮</div>
+                            <div class="text-xs font-bold text-slate-800">資深車長</div>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-sm">
+                            <i class="fa-solid fa-utensils text-rose-500 text-base mb-1"></i>
+                            <div class="text-xs text-slate-500">母親馬鳳香</div>
+                            <div class="text-xs font-bold text-slate-800">賢妻良母</div>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-sm">
+                            <i class="fa-solid fa-graduation-cap text-teal-600 text-base mb-1"></i>
+                            <div class="text-xs text-slate-500">兒子高子聰</div>
+                            <div class="text-xs font-bold text-slate-800">青年力量</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Family Members -->
+    <section id="members" class="py-16 bg-amber-50/60 border-y border-amber-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full">Family Members</span>
+                <h2 class="text-3xl font-bold font-serif-custom text-slate-900 mt-2">家庭三位核心人物</h2>
+                <p class="text-slate-600 text-sm mt-2">各司其職，心手相連，築起最堅固的避風港</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Person 1: 高賜榮 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 hover:shadow-md transition-shadow flex flex-col justify-between group">
+                    <div>
+                        <div class="relative mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-2xl font-serif-custom font-bold shadow-lg group-hover:scale-105 transition-transform">
+                                賜榮
+                            </div>
+                            <span class="absolute -bottom-2 right-0 bg-amber-100 text-amber-800 text-xs px-2.5 py-0.5 rounded-full font-medium border border-amber-200">
+                                <i class="fa-solid fa-bus text-xs mr-1"></i> 父親 / 頂樑柱
+                            </span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-serif-custom text-slate-900">高賜榮</h3>
+                        <p class="text-xs text-amber-700 font-medium mb-4">澳門公共巴士資深車長</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            駕駛座位上三千多個日夜，熟知澳門每一條狹窄巷弄與大橋風雨。手握方向盤，肩負的是無數乘客的安全與整家人的生活重擔。
+                        </p>
+                    </div>
+                    <a href="#bus-driver" class="inline-flex items-center text-xs font-bold text-amber-700 hover:text-amber-800 gap-1 pt-4 border-t border-slate-100">
+                        查看賜榮的駕駛日常 <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Person 2: 馬鳳香 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 hover:shadow-md transition-shadow flex flex-col justify-between group">
+                    <div>
+                        <div class="relative mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-2xl font-serif-custom font-bold shadow-lg group-hover:scale-105 transition-transform">
+                                鳳香
+                            </div>
+                            <span class="absolute -bottom-2 right-0 bg-rose-100 text-rose-800 text-xs px-2.5 py-0.5 rounded-full font-medium border border-rose-200">
+                                <i class="fa-solid fa-house-heart text-xs mr-1"></i> 母親 / 溫暖港灣
+                            </span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-serif-custom text-slate-900">馬鳳香</h3>
+                        <p class="text-xs text-rose-700 font-medium mb-4">勤儉賢惠的普通家庭主婦</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            用默默無聞的付出，把一家三口的生活照顧得井井有條。一碗老火湯、乾淨衣裳與無微不至的關懷，是她給予家裡最豐厚的底色。
+                        </p>
+                    </div>
+                    <a href="#housewife" class="inline-flex items-center text-xs font-bold text-rose-700 hover:text-rose-800 gap-1 pt-4 border-t border-slate-100">
+                        感受鳳香的家常溫情 <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Person 3: 高子聰 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 hover:shadow-md transition-shadow flex flex-col justify-between group">
+                    <div>
+                        <div class="relative mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-teal-600 text-white flex items-center justify-center text-2xl font-serif-custom font-bold shadow-lg group-hover:scale-105 transition-transform">
+                                子聰
+                            </div>
+                            <span class="absolute -bottom-2 right-0 bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-medium border border-teal-200">
+                                <i class="fa-solid fa-user-graduate text-xs mr-1"></i> 兒子 / 未來希望
+                            </span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-serif-custom text-slate-900">高子聰</h3>
+                        <p class="text-xs text-teal-700 font-medium mb-4">踏實向上·承載愛的下一代</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            在父母的愛與身教中成長，深刻理解父親汗水與母親心血。心懷感激，努力學習與工作，立志成為讓雙親驕傲的依靠。
+                        </p>
+                    </div>
+                    <a href="#son" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-800 gap-1 pt-4 border-t border-slate-100">
+                        閱讀子聰的感恩成長 <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Feature: 高賜榮 (Gao Cirong - Bus Driver) -->
+    <section id="bus-driver" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl p-6 md:p-10 border border-amber-200/80 shadow-md">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-xl font-bold shadow">
+                        <i class="fa-solid fa-bus"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">父愛如山 · 職人精神</span>
+                        <h2 class="text-2xl md:text-3xl font-bold font-serif-custom text-slate-900 mt-1">高賜榮：方向盤上的三十載歲月</h2>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <i class="fa-solid fa-route text-amber-600 mr-1"></i> 常規路線：行經新馬路、筷子基、氹仔舊城區
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
+                <!-- Story Description -->
+                <div class="lg:col-span-5 space-y-4 text-slate-600 text-sm leading-relaxed">
+                    <p>
+                        在澳門狹窄且繁忙的街道上，高賜榮手握方向盤已有數十載。每天清晨 5:30，當城市還在沉睡，他已穿好整齊的車長制服，抵達總站進行出車前的嚴格檢查。
+                    </p>
+                    <p>
+                        不論是颱風雨季的舊大橋風浪，還是假期新馬路的人潮如織，賜榮總是沉著冷靜，平穩駕駛。對他而言，這不單是一份養家糊口的工作，更是一份將乘客安全送達、將溫暖帶給這座小城的承諾。
+                    </p>
+                    <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200/60 text-slate-700 text-xs font-medium space-y-2">
+                        <p class="text-amber-800 font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-quote-left"></i> 賜榮的座右銘：
+                        </p>
+                        <p class="italic pl-4 text-slate-600">「車開得平穩，乘客安心，家裡人才放心。開巴士和做人一樣，一步一個腳印，平平安安就是最大的福氣。」</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Bus Schedule / Day-in-the-life -->
+                <div class="lg:col-span-7 bg-slate-900 text-slate-100 rounded-2xl p-6 shadow-inner relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+                        <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                            <i class="fa-solid fa-clock"></i> 賜榮的一天 · 班次時間軸
+                        </h3>
+                        <span class="text-xs text-slate-400">點擊不同時段解鎖故事</span>
+                    </div>
+
+                    <!-- Interactive Shift Selector -->
+                    <div id="shiftTimeline" class="space-y-3">
+                        <button onclick="selectShift(0)" class="shift-btn w-full text-left p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-amber-500/30 transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-amber-600 text-white text-xs font-mono font-bold px-2 py-1 rounded">05:15</span>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-200">晨光出港 · 檢查出車</p>
+                                    <p class="text-[11px] text-slate-400">筷子基總站，試煞車、清潔車廂</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400 transition-colors"></i>
+                        </button>
+
+                        <button onclick="selectShift(1)" class="shift-btn w-full text-left p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700 border border-slate-700 transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-slate-700 text-slate-300 text-xs font-mono font-bold px-2 py-1 rounded">08:00</span>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-200">早高峰忙碌 · 舊大橋橫跨</p>
+                                    <p class="text-[11px] text-slate-400">載著上班族與學生穿梭本島與氹仔</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400 transition-colors"></i>
+                        </button>
+
+                        <button onclick="selectShift(2)" class="shift-btn w-full text-left p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700 border border-slate-700 transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-slate-700 text-slate-300 text-xs font-mono font-bold px-2 py-1 rounded">12:30</span>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-200">午間交班 · 鳳香的便當</p>
+                                    <p class="text-[11px] text-slate-400">總站休息室，品嚐妻子準備的熱湯與飯菜</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400 transition-colors"></i>
+                        </button>
+
+                        <button onclick="selectShift(3)" class="shift-btn w-full text-left p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700 border border-slate-700 transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-slate-700 text-slate-300 text-xs font-mono font-bold px-2 py-1 rounded">19:30</span>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-200">晚霞歸途 · 回家吃晚飯</p>
+                                    <p class="text-[11px] text-slate-400">交車泊位，帶著一身疲憊但充實的心情回家</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400 transition-colors"></i>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Details Display Box -->
+                    <div id="shiftDetail" class="mt-4 p-4 rounded-xl bg-amber-950/40 border border-amber-600/30 text-amber-100 text-xs leading-relaxed">
+                        <i class="fa-solid fa-circle-info text-amber-400 mr-1"></i>
+                        <span id="shiftDetailText">05:15 清晨，賜榮在薄霧中抵達總站。做完全套安檢後，點燃第一趟車的引擎，為小城拉開一日序幕。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Feature: 馬鳳香 (Ma Fengxiang - Housewife) -->
+    <section id="housewife" class="py-16 bg-rose-50/40 border-y border-rose-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 md:p-10 border border-rose-200/80 shadow-md">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-100">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-xl font-bold shadow">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-200">溫柔力量 · 默默奉獻</span>
+                            <h2 class="text-2xl md:text-3xl font-bold font-serif-custom text-slate-900 mt-1">馬鳳香：細水長流的煙火溫馨</h2>
+                        </div>
+                    </div>
+                    <div class="text-xs text-slate-500 bg-rose-50 p-3 rounded-xl border border-rose-200">
+                        <i class="fa-solid fa-kitchen-set text-rose-600 mr-1"></i> 筷子基溫馨家園 · 一日三餐的老火湯香
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8 items-center">
+                    <!-- Mother Interactive Recipe / Care Cards -->
+                    <div class="lg:col-span-7 order-2 lg:order-1">
+                        <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-mortar-pestle text-rose-600"></i> 鳳香的持家密碼與愛心菜單
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Card 1 -->
+                            <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-200 hover:bg-rose-50 transition-colors">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-bold text-rose-800">
+                                        <i class="fa-solid fa-bowl-food text-rose-600 mr-1"></i> 清補涼煲豬骨湯
+                                    </span>
+                                    <span class="text-[10px] bg-rose-200 text-rose-800 px-2 py-0.5 rounded-full">父子最愛</span>
+                                </div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    澳門氣候濕熱，鳳香每逢週末定去街市挑選新鮮食材。文火慢煲數小時，為開車疲憊的賜榮與讀書辛勞的子聰祛濕補氣。
+                                </p>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 hover:bg-amber-50 transition-colors">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-bold text-amber-800">
+                                        <i class="fa-solid fa-shirt text-amber-600 mr-1"></i> 嚴謹齊整的制服
+                                    </span>
+                                    <span class="text-[10px] bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full">每日必做</span>
+                                </div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    每天傍晚熨燙好賜榮明天的巴士車長襯衫，褲腳平整無皺摺。讓丈夫每天都能精精神神、尊嚴體面地出門工作。
+                                </p>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200 hover:bg-teal-50 transition-colors">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-bold text-teal-800">
+                                        <i class="fa-solid fa-piggy-bank text-teal-600 mr-1"></i> 精打細算治家之道
+                                    </span>
+                                    <span class="text-[10px] bg-teal-200 text-teal-800 px-2 py-0.5 rounded-full">勤儉持家</span>
+                                </div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    一本厚厚的家庭記帳本，記錄著三十年來的點滴開支。雖然節儉，但對子聰的教育與成長所需，從未有過絲毫猶豫。
+                                </p>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="p-4 rounded-2xl bg-purple-50/60 border border-purple-200 hover:bg-purple-50 transition-colors">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-bold text-purple-800">
+                                        <i class="fa-solid fa-comments text-purple-600 mr-1"></i> 深夜燈火下的傾聽
+                                    </span>
+                                    <span class="text-[10px] bg-purple-200 text-purple-800 px-2 py-0.5 rounded-full">情緒避風港</span>
+                                </div>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    無論多晚，餐桌上總留著一盞溫暖的燈。聽賜榮講講路上的趣事，聽子聰聊聊學校與工作的迷茫，給予最溫柔的鼓勵。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story Text -->
+                    <div class="lg:col-span-5 order-1 lg:order-2 space-y-4 text-slate-600 text-sm leading-relaxed">
+                        <p>
+                            馬鳳香是典型而了不起的澳門家庭主婦。她沒有驚天動地的事業，卻用數十年如一日的耐性與愛心，將這個家經營得溫暖而踏實。
+                        </p>
+                        <p>
+                            在她看來，家人的健康與笑容，就是她最大的成就。街市裡與菜販的熟絡寒暄、廚房裡蒸騰的熱氣、以及乾淨明亮的客廳，組成了高家最堅固的後盾。
+                        </p>
+                        <div class="p-4 bg-rose-50 rounded-2xl border border-rose-200 text-slate-700 text-xs font-medium space-y-2">
+                            <p class="text-rose-800 font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left"></i> 鳳香的心聲：
+                            </p>
+                            <p class="italic pl-4 text-slate-600">「外面風雨再大，只要回到家，吃一口熱飯，喝一口熱湯，心就能定下來。一家人健健康康在一起，比什麼都重要。」</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Feature: 高子聰 (Gao Zicong - Son) -->
+    <section id="son" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl p-6 md:p-10 border border-teal-200/80 shadow-md">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-100">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-600 text-white flex items-center justify-center text-xl font-bold shadow">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-md border border-teal-200">薪火相傳 · 感恩反哺</span>
+                        <h2 class="text-2xl md:text-3xl font-bold font-serif-custom text-slate-900 mt-1">高子聰：沐浴愛意長成的港灣希望</h2>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-500 bg-teal-50 p-3 rounded-xl border border-teal-200">
+                    <i class="fa-solid fa-heart text-teal-600 mr-1"></i> 新一代澳門青年 · 承載家族溫情
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
+                <!-- Son's Interactive Gratitude Letter -->
+                <div class="lg:col-span-7 bg-amber-50/50 rounded-2xl p-6 border border-amber-200 relative">
+                    <div class="absolute top-4 right-4 text-amber-300 opacity-30 text-5xl font-serif">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="text-base font-bold font-serif-custom text-slate-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-nib text-teal-600"></i> 子聰寫給爸媽的一封信
+                    </h3>
+                    
+                    <div id="letterContent" class="text-xs md:text-sm text-slate-700 leading-relaxed space-y-3 font-serif-custom">
+                        <p>「從小，我就常坐在爸爸開的巴士最後排。看著他寬厚的肩膀與穩健的手勢，心裡總有一股說不出的安全感；回到家，媽媽端上桌的熱湯與總是笑盈盈的面容，是我成長中最溫暖的記憶。」</p>
+                        <p>「長大後我才明白，爸爸的方向盤轉過的是歲月辛勞，媽媽的柴米油鹽盛滿的是深情厚意。你們用最平凡的雙手，為我撐起了無風無雨的天空。」</p>
+                        <p>「如今我漸漸長大，換我來成為你們的依靠。謝謝你們，賜榮爸爸、鳳香媽媽，做你們的兒子，是我這輩子最大的幸運。」</p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-amber-200/60 flex items-center justify-between text-xs text-slate-500">
+                        <span class="font-medium text-amber-900">— 兒子 高子聰 敬上</span>
+                        <button onclick="toggleLetterMode()" class="text-teal-700 hover:text-teal-800 font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-repeat"></i> <span id="letterToggleText">切換成長感悟模式</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Son's Growth Milestones -->
+                <div class="lg:col-span-5 space-y-4">
+                    <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-teal-600"></i> 子聰成長路上的里程碑
+                    </h3>
+
+                    <div class="space-y-3">
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:shadow-sm transition-all flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xs shrink-0">01</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-800">兒時乘車記</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">放學後搭乘父親開的巴士，坐在靠窗位置看澳門街道，體會父親工作的辛苦與偉大。</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:shadow-sm transition-all flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xs shrink-0">02</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-800">學業與奮鬥</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">深夜燈下苦讀，母親總是默默端上一碗糖水或熱鮮奶，這份愛陪伴他順利完成學業。</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:shadow-sm transition-all flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xs shrink-0">03</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-800">踏入社會·反哺家庭</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">領到第一份薪水時，為爸爸買了護腰靠墊，為媽媽買了按摩儀，開始肩負起照顧父母的責任。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Timeline Section -->
+    <section id="timeline" class="py-16 bg-amber-50/40 border-y border-amber-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full">Memory Lane</span>
+                <h2 class="text-3xl font-bold font-serif-custom text-slate-900 mt-2">高家歲月時光軸</h2>
+                <p class="text-slate-600 text-sm mt-2">點滴時光，匯聚成最珍貴的家族記憶</p>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="relative border-l-2 border-amber-300/80 ml-4 md:ml-32 space-y-8">
+                <!-- Item 1 -->
+                <div class="relative pl-6 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-600 border-2 border-white shadow"></div>
+                    <div class="hidden md:block absolute -left-32 top-1 text-xs font-bold text-amber-800 font-mono">1990 年代</div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-200/80 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="md:hidden text-xs font-bold text-amber-800 font-mono mb-1 block">1990 年代</span>
+                        <h3 class="text-base font-bold font-serif-custom text-slate-900">相知相守 · 結為連理</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            高賜榮與馬鳳香在澳門相識。那時小城步調緩慢，兩人憑藉踏實與勤勞，在筷子基安下了溫馨的小家。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-6 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rose-600 border-2 border-white shadow"></div>
+                    <div class="hidden md:block absolute -left-32 top-1 text-xs font-bold text-rose-800 font-mono">2000 年代初</div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-200/80 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="md:hidden text-xs font-bold text-rose-800 font-mono mb-1 block">2000 年代初</span>
+                        <h3 class="text-base font-bold font-serif-custom text-slate-900">子聰誕生 · 歡聲笑語</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            兒子高子聰降生，帶來了無盡的喜悅。賜榮工作更加賣力，鳳香全心全意照顧孩子的飲食起居，家庭生活充滿生機。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-6 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-teal-600 border-2 border-white shadow"></div>
+                    <div class="hidden md:block absolute -left-32 top-1 text-xs font-bold text-teal-800 font-mono">2010 年代</div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-200/80 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="md:hidden text-xs font-bold text-teal-800 font-mono mb-1 block">2010 年代</span>
+                        <h3 class="text-base font-bold font-serif-custom text-slate-900">陪伴成長 · 澳門變遷</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            澳門城市飛速發展，賜榮駕駛的巴士路線更新了一代又一代。子聰進入學校求學，鳳香始終如一地守護著家中的每一餐熱飯。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="relative pl-6 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-700 border-2 border-white shadow"></div>
+                    <div class="hidden md:block absolute -left-32 top-1 text-xs font-bold text-amber-900 font-mono">至今</div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-200/80 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="md:hidden text-xs font-bold text-amber-900 font-mono mb-1 block">至今</span>
+                        <h3 class="text-base font-bold font-serif-custom text-slate-900">感恩當下 · 未來可期</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            子聰成長為有擔當的青年，開始照顧雙親。賜榮依然熱愛駕駛崗位，鳳香依然操持著溫暖家庭。一家三口，平安喜樂。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook Section -->
+    <section id="guestbook" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl p-6 md:p-10 border border-amber-200 shadow-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Message Form -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full">Interactive Wall</span>
+                        <h2 class="text-2xl font-bold font-serif-custom text-slate-900 mt-2">為高氏一家送上祝福</h2>
+                        <p class="text-xs text-slate-500 mt-1">無論您是致敬辛勞的巴士司機、致敬偉大的家庭主婦，抑或是給子聰加油打氣，都歡迎留下溫暖的話語。</p>
+                    </div>
+
+                    <form id="wishForm" onsubmit="handleWishSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">您的暱稱 / 身份</label>
+                            <input type="text" id="wishName" required placeholder="例如：街坊小王 / 澳門乘客" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-amber-600 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">祝福對象</label>
+                            <select id="wishTarget" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-amber-600 transition-colors bg-white">
+                                <option value="高氏全家">高氏全家 (平安喜樂)</option>
+                                <option value="高賜榮 車長">高賜榮 車長 (一路順風)</option>
+                                <option value="馬鳳香 女士">馬鳳香 女士 (健康美麗)</option>
+                                <option value="高子聰 先生">高子聰 先生 (前程似錦)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">祝福寄語</label>
+                            <textarea id="wishMessage" required rows="3" placeholder="寫下您的祝福與寄語..." class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-amber-600 transition-colors custom-scrollbar"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 rounded-xl text-xs shadow transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>送出祝福</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Display Messages Wall -->
+                <div class="lg:col-span-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-comments text-amber-600"></i> 最新祝福牆
+                            </h3>
+                            <span class="text-[11px] text-slate-400">實時更新</span>
+                        </div>
+
+                        <div id="messagesList" class="space-y-3 max-h-[360px] overflow-y-auto pr-2 custom-scrollbar">
+                            <!-- Preset Message 1 -->
+                            <div class="p-3.5 bg-amber-50/60 rounded-2xl border border-amber-100">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-xs font-bold text-slate-800">澳門老乘客</span>
+                                    <span class="text-[10px] text-amber-800 bg-amber-100 px-2 py-0.5 rounded-md">致：高賜榮 車長</span>
+                                </div>
+                                <p class="text-xs text-slate-600">感謝高車長多年來平穩安全的駕駛！每次搭您的車都覺得很安心，祝您工作順利，平平安安！</p>
+                            </div>
+
+                            <!-- Preset Message 2 -->
+                            <div class="p-3.5 bg-rose-50/60 rounded-2xl border border-rose-100">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-xs font-bold text-slate-800">筷子基街坊</span>
+                                    <span class="text-[10px] text-rose-800 bg-rose-100 px-2 py-0.5 rounded-md">致：馬鳳香 女士</span>
+                                </div>
+                                <p class="text-xs text-slate-600">鳳香姐總是對大家笑容滿面，賢惠持家。祝您身體健康，家庭幸福美滿！</p>
+                            </div>
+
+                            <!-- Preset Message 3 -->
+                            <div class="p-3.5 bg-teal-50/60 rounded-2xl border border-teal-100">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-xs font-bold text-slate-800">大學好友</span>
+                                    <span class="text-[10px] text-teal-800 bg-teal-100 px-2 py-0.5 rounded-md">致：高子聰 先生</span>
+                                </div>
+                                <p class="text-xs text-slate-600">子聰是個非常有孝心又有責任感的好兄弟，看到叔叔阿姨把你教育得這麼優秀，祝你們一家永遠溫馨！</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-4 text-center">讓溫情在小城流淌 · 高氏家族感謝您的關心</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Full Family Story -->
+    <div id="storyModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl border border-amber-200 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeStoryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <span class="text-xs font-bold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">家族紀錄誌</span>
+                <h3 class="text-2xl font-bold font-serif-custom text-slate-900 mt-2">高家的澳門故事：平淡中的偉大</h3>
+            </div>
+
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4 font-serif-custom">
+                <p>
+                    在澳門這座璀璨的都市背後，無數像高賜榮與馬鳳香這樣的普通夫妻，默默用雙手撐起了家庭，也撐起了小城的日常運轉。
+                </p>
+                <p>
+                    父親高賜榮以公車方向盤為舞台，年復一年，送往迎來，將敬業與平穩詮釋得淋漓盡致；母親馬鳳香以柴米油鹽為畫筆，無聲無息，打理家園，將溫情與照顧化為一碗碗熱湯。
+                </p>
+                <p>
+                    而在這片沃土中成長起來的兒子高子聰，則承載著這個家庭最樸素的期待：善良、勇敢、懂得感恩。這個網站既是一份家庭的數位檔案，更是對澳門無數平凡而偉大家庭的真誠致敬。
+                </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeStoryModal()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl">
+                    關閉閱讀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-10 border-t border-slate-800 mt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex justify-center items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-serif-custom font-bold text-sm">
+                    高
+                </div>
+                <span class="font-serif-custom text-base text-slate-200 font-bold">小城微光 · 高氏一家</span>
+            </div>
+            <p class="max-w-md mx-auto text-slate-400">
+                獻給 高賜榮 (澳門巴士車長)、馬鳳香 (普通家庭主婦) 與 高子聰 的專屬歲月紀實網站
+            </p>
+            <p class="text-[11px] text-slate-400">
+                © 2026 高家歲月紀錄誌 · Made with Love in Macao
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Shift Schedule Data for Gao Cirong
+        const shiftData = [
+            {
+                time: '05:15',
+                title: '晨光出港 · 檢查出車',
+                desc: '05:15 清晨，賜榮在薄霧中抵達總站。做完全套安檢後，點燃第一趟車的引擎，為小城拉開一日序幕。'
+            },
+            {
+                time: '08:00',
+                title: '早高峰忙碌 · 舊大橋橫跨',
+                desc: '08:00 舊大橋上車水馬龍。賜榮專注地握緊方向盤，將趕著上學與上班的乘客平穩送達目的地。'
+            },
+            {
+                time: '12:30',
+                title: '午間交班 · 鳳香的便當',
+                desc: '12:30 總站休息室裡，賜榮打開妻子鳳香精心準備的保溫便當與老火湯，這是一天中最溫暖舒心的時刻。'
+            },
+            {
+                time: '19:30',
+                title: '晚霞歸途 · 回家吃晚飯',
+                desc: '19:30 完成最後一趟班次，將巴士清潔泊好。賜榮收起制服，帶著踏實的心情回家與鳳香、子聰共進晚餐。'
+            }
+        ];
+
+        function selectShift(index) {
+            const shift = shiftData[index];
+            const detailText = document.getElementById('shiftDetailText');
+            detailText.innerText = shift.desc;
+
+            // Highlight button active status
+            const buttons = document.querySelectorAll('.shift-btn');
+            buttons.forEach((btn, i) => {
+                if (i === index) {
+                    btn.classList.add('bg-slate-800', 'border-amber-500/30');
+                    btn.classList.remove('bg-slate-800/60', 'border-slate-700');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'border-amber-500/30');
+                    btn.classList.add('bg-slate-800/60', 'border-slate-700');
+                }
+            });
+        }
+
+        // Toggle Son's Letter Mode
+        let isLetterMode = true;
+        function toggleLetterMode() {
+            const letterContent = document.getElementById('letterContent');
+            const toggleText = document.getElementById('letterToggleText');
+
+            if (isLetterMode) {
+                letterContent.innerHTML = `
+                    <p>「很多人問我，出生在一個普通的澳門家庭是什麼感覺？我的答案是：充實而無比幸運。」</p>
+                    <p>「爸爸開了一輩子巴士，教給我的是責任與耐性；媽媽操持了一輩子家務，教給我的是善良與細膩。他們雖然普通，但他們的愛比什麼都偉大。」</p>
+                    <p>「未來不管走多遠，筷子基的燈光與餐桌上的湯香，永遠是我前行最大的動力。」</p>
+                `;
+                toggleText.innerText = '切換至家書模式';
+                isLetterMode = false;
+            } else {
+                letterContent.innerHTML = `
+                    <p>「從小，我就常坐在爸爸開的巴士最後排。看著他寬厚的肩膀與穩健的手勢，心裡總有一股說不出的安全感；回到家，媽媽端上桌的熱湯與總是笑盈盈的面容，是我成長中最溫暖的記憶。」</p>
+                    <p>「長大後我才明白，爸爸的方向盤轉過的是歲月辛勞，媽媽的柴米油鹽盛滿的是深情厚意。你們用最平凡的雙手，為我撐起了無風無雨的天空。」</p>
+                    <p>「如今我漸漸長大，換我來成為你們的依靠。謝謝你們，賜榮爸爸、鳳香媽媽，做你們的兒子，是我這輩子最大的幸運。」</p>
+                `;
+                toggleText.innerText = '切換成長感悟模式';
+                isLetterMode = true;
+            }
+        }
+
+        // Handle Wish Form Submit
+        function handleWishSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('wishName').value.trim();
+            const target = document.getElementById('wishTarget').value;
+            const message = document.getElementById('wishMessage').value.trim();
+
+            if (!name || !message) return;
+
+            // Target badge color style selection
+            let badgeStyle = 'bg-amber-100 text-amber-800';
+            let cardBgStyle = 'bg-amber-50/60 border-amber-100';
+
+            if (target.includes('鳳香')) {
+                badgeStyle = 'bg-rose-100 text-rose-800';
+                cardBgStyle = 'bg-rose-50/60 border-rose-100';
+            } else if (target.includes('子聰')) {
+                badgeStyle = 'bg-teal-100 text-teal-800';
+                cardBgStyle = 'bg-teal-50/60 border-teal-100';
+            }
+
+            const newMessageCard = document.createElement('div');
+            newMessageCard.className = `p-3.5 rounded-2xl border ${cardBgStyle} transform transition-all duration-300 scale-95 opacity-0`;
+            newMessageCard.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-slate-800">${escapeHTML(name)}</span>
+                    <span class="text-[10px] ${badgeStyle} px-2 py-0.5 rounded-md">致：${escapeHTML(target)}</span>
+                </div>
+                <p class="text-xs text-slate-600">${escapeHTML(message)}</p>
+            `;
+
+            const list = document.getElementById('messagesList');
+            list.insertBefore(newMessageCard, list.firstChild);
+
+            // Trigger enter animation
+            setTimeout(() => {
+                newMessageCard.classList.remove('scale-95', 'opacity-0');
+                newMessageCard.classList.add('scale-100', 'opacity-100');
+            }, 50);
+
+            // Reset form
+            document.getElementById('wishForm').reset();
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        // Story Modal Logic
+        function openStoryModal() {
+            document.getElementById('storyModal').classList.remove('hidden');
+        }
+
+        function closeStoryModal() {
+            document.getElementById('storyModal').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
